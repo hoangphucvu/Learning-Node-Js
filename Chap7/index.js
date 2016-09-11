@@ -5,10 +5,16 @@ if (app.thing === null) {
     console.log('bleat');
 }
 //set up handlebars view engine
-var handlebars = require('express3-handlebars')
-    .create({
-        defaultLayout: 'main'
-    });
+var handlebars = require('express3-handlebars').create({
+    defaultLayout:'main',
+    helpers: {
+        section: function(name, options){
+            if(!this._sections) this._sections = {};
+            this._sections[name] = options.fn(this);
+            return null;
+        }
+    }
+});
 
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
@@ -17,7 +23,7 @@ app.set('port', process.env.PORT || 3000);
 app.use(express.static(__dirname + '/public'));
 app.use(function(req, res, next) {
     res.locals.showTests = app.get('env') !== 'production' &&
-        req.query.test === '1';
+    req.query.test === '1';
     next();
 });
 
@@ -25,27 +31,27 @@ app.use(function(req, res, next) {
 function getWeatherData(){
     return {
         locations: [
-            {
-                name: 'Portland',
-                forecastUrl: 'http://www.wunderground.com/US/OR/Portland.html',
-                iconUrl: 'http://icons-ak.wxug.com/i/c/k/cloudy.gif',
-                weather: 'Overcast',
-                temp: '54.1 F (12.3 C)',
-            },
-            {
-                name: 'Bend',
-                forecastUrl: 'http://www.wunderground.com/US/OR/Bend.html',
-                iconUrl: 'http://icons-ak.wxug.com/i/c/k/partlycloudy.gif',
-                weather: 'Partly Cloudy',
-                temp: '55.0 F (12.8 C)',
-            },
-            {
-                name: 'Manzanita',
-                forecastUrl: 'http://www.wunderground.com/US/OR/Manzanita.html',
-                iconUrl: 'http://icons-ak.wxug.com/i/c/k/rain.gif',
-                weather: 'Light Rain',
-                temp: '55.0 F (12.8 C)',
-            },
+        {
+            name: 'Portland',
+            forecastUrl: 'http://www.wunderground.com/US/OR/Portland.html',
+            iconUrl: 'http://icons-ak.wxug.com/i/c/k/cloudy.gif',
+            weather: 'Overcast',
+            temp: '54.1 F (12.3 C)',
+        },
+        {
+            name: 'Bend',
+            forecastUrl: 'http://www.wunderground.com/US/OR/Bend.html',
+            iconUrl: 'http://icons-ak.wxug.com/i/c/k/partlycloudy.gif',
+            weather: 'Partly Cloudy',
+            temp: '55.0 F (12.8 C)',
+        },
+        {
+            name: 'Manzanita',
+            forecastUrl: 'http://www.wunderground.com/US/OR/Manzanita.html',
+            iconUrl: 'http://icons-ak.wxug.com/i/c/k/rain.gif',
+            weather: 'Light Rain',
+            temp: '55.0 F (12.8 C)',
+        },
         ],
     };
 }

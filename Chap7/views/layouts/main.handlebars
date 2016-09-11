@@ -1,11 +1,11 @@
 <!doctype html>
 <html>
 	<head>
-		<title>Chap 5</title>
+		<title>Chap 7</title>
+		{{{_sections.head}}}
 		{{#if showTests}}
 		<link rel="stylesheet" href="/vendor/mocha.css">
 		{{/if}}
-		<script src="//code.jquery.com/jquery-2.0.2.min.js"></script>
 	</head>
 </head>
 <body>
@@ -13,6 +13,8 @@
 		<img src="/img/logo.jpg" alt="" style="width:50%;margin:auto">
 	</header>
 	{{{body}}}
+	<script src="//code.jquery.com/jquery-2.0.2.min.js"></script>
+	{{{_sections.jquery}}}
 	{{#if showTests}}
 	<div id="mocha"></div>
 	<script src="/vendor/mocha.js"></script>
