@@ -1,0 +1,14 @@
+{
+  "name": "nodejs-express-web-applications",
+  "version": "1.0.0",
+  "description": "Building library web application with node & express",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tony",
+  "license": "ISC",
+  "dependencies":{
+    "express":"^4.13.3"
+  }
+}
