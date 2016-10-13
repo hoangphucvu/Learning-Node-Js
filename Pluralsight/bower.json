@@ -1,0 +1,15 @@
+{
+  "name": "nodejs-express-web-applications",
+  "description": "Building library web application with node & express",
+  "main": "app.js",
+  "authors": [
+    "Tony"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/hoangphucvu/Learning-Node-Js",
+  "ignore": [],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "font-awesome": "^4.6.3"
+  }
+}
